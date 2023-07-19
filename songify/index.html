@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Songify</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./songify.css" />
+    </head>
+    <body>
+        <div class="widget">
+            <div class="widget-main">
+                <div class="image-block">
+                    <div class="image" id="image"></div>
+                    <div class="progress" id="progress"></div>
+                </div>
+                <div class="info-block">
+                    <div class="loading" id="loading">
+                        Loading...
+                    </div>
+                    <div class="nothing hidden" id="nothing">
+                        Nothing currently playing
+                    </div>
+                    <div class="info-content hidden" id="content">
+                        <div class="playing-label">
+                            Now playing:
+                        </div>
+                        <div class="playing-artist-container">
+                            <div class="playing-artist-content">
+                                <div class="playing-artist" id="artist">
+                                    Artist
+                                </div>
+                            </div>
+                        </div>
+                        <div class="playing-title-container">
+                            <div class="playing-title-content">
+                                <div class="playing-title" id="title">
+                                    Song
+                                </div>
+                            </div>
+                        </div>
+                        <div class="playing-requested-container">
+                            Requested by:
+                            <div class="playing-requested-content">
+                                <div class="playing-requested" id="requested">
+                                    Requester
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="widget-footer">Powered by Songify</div>
+        </div>
+        <script src="./songify.js"></script>
+    </body>
+</html>

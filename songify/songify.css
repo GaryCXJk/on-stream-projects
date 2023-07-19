@@ -1,0 +1,154 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --widget-width: 320;
+    --widget-height: 100;
+    
+    --widget-background-color: rgba(0, 0, 0, 0.75);
+    --widget-padding: .5rem;
+    --widget-border-radius: .5rem;
+    
+    --font-color: #fff;
+    --font-family: "Montserrat", sans-serif;
+    --font-size: 14;
+
+    --image-background-color: #ccc;
+
+    --progress-background-color: #fff;
+    --progress-height: .25rem;
+    --progress-margin: .25rem;
+}
+
+html {
+    font-size: calc(var(--font-size) * 100vw / var(--widget-width));
+    color: var(--font-color);
+    font-family: var(--font-family);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.widget {
+    display: flex;
+    width: 100%;
+    height: calc(var(--widget-height) * 100vw / var(--widget-width));
+    font-size: 1rem;
+    background-color: var(--widget-background-color);
+    padding: var(--widget-padding);
+    border-radius: var(--widget-border-radius);
+    flex-direction: column;
+}
+
+.widget-main {
+    display: flex;
+    width: 100%;
+    flex: 1 0 0;
+    gap: calc(var(--widget-padding) * 2);
+}
+
+.image-block {
+    aspect-ratio: 1;
+    max-width: 4rem;
+}
+
+.image {
+    background-color: #ccc;
+    aspect-ratio: 1;
+    background-size: cover;
+    background-position: center;
+    background-image: url('./music-note.svg');
+}
+
+.progress {
+    margin-top: var(--progress-margin);
+    height: var(--progress-height);
+    background-color: #fff;
+    width: 0;
+}
+
+.info-block {
+    flex: 1 0 0;
+}
+
+.loading {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-content .playing-label {
+    font-weight: 700;
+    font-size: .75rem;
+}
+
+.playing-artist-container {
+    padding-left: calc(var(--widget-padding) * 2);
+    font-size: .875rem;
+    font-style: italic;
+}
+
+.playing-artist-content {
+    position: relative;
+    overflow: hidden;
+    height: 1.125rem;
+}
+
+.playing-artist {
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+}
+
+.playing-title-container {
+    padding-left: var(--widget-padding);
+}
+
+.playing-title-content {
+    position: relative;
+    overflow: hidden;
+    height: 1.25rem;
+}
+
+.playing-title {
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+}
+
+.playing-requested-container {
+    padding-left: var(--widget-padding);
+    font-size: .625rem;
+    display: flex;
+    gap: .5rem;
+}
+
+.playing-requested-content {
+    position: relative;
+    overflow: hidden;
+    height: 0.875rem;
+    flex: 1 0 0;
+}
+
+.playing-requested {
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+}
+
+.widget-footer {
+    font-size: .5rem;
+    text-align: center;
+}

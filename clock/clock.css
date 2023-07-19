@@ -1,0 +1,83 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 14vw;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    opacity: .5;
+}
+
+.flex {
+    display: flex;
+}
+
+.relative {
+    position: relative;
+}
+
+.hand {
+    --base-size: .25rem;
+    --hand-size: .125rem;
+    --hand-length: 2.5rem;
+    --hand-color: black;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: calc(var(--base-size) / -2);
+    margin-top: calc(var(--base-size) / -2);
+    width: var(--base-size);
+    height: var(--base-size);
+    background-color: var(--hand-color);
+    border-radius: 100%;
+}
+
+.hand::after {
+    content: '';
+    position: absolute;
+    left: calc((var(--base-size) - var(--hand-size)) / 2);
+    bottom: calc((var(--base-size) - var(--hand-size)) / 2);
+    width: var(--hand-size);
+    height: var(--hand-length);
+    background-color: var(--hand-color);
+    border-radius: var(--hand-size);
+}
+
+#second {
+    --hand-size: .175rem;
+    --hand-color: rgb(255, 71, 71);
+}
+
+#minute {
+    --hand-size: .15rem;
+    --base-size: .375rem;
+    --hand-color: #888;
+    --hand-length: 2.75rem;
+}
+
+#hour {
+    --hand-color: #555;
+    --base-size: .375rem;
+    --hand-length: 2rem;
+}
+
+#time {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: .5rem;
+    font-size: .5rem;
+    font-family: sans-serif;
+    text-align: center;
+    font-weight: 900;
+    color: #0070c7;
+}
