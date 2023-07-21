@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>003 Fetch</title>
+    </head>
+    <body>
+        <script>
+            console.clear();
+
+            async function getData() {
+                try {
+                    console.log('Fetching data...');
+                    const response = await fetch('./data-ba.json');
+                    console.log('Done fetching data');
+
+                    return await response.json();
+                } catch (e) {
+                    console.log(e);
+                    return {};
+                }
+            }
+
+            getData().then((json) => {
+                console.log(json);
+            });
+        </script>
+    </body>
+</html>

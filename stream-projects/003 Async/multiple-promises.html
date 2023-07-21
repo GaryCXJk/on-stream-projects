@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>003 Promises</title>
+    </head>
+    <body>
+        <div id="race"></div>
+        <div id="commentary"></div>
+        <script>
+            console.clear();
+
+            const raceElement = document.querySelector('#race');
+            const commentaryElement = document.querySelector('#commentary');
+
+            const racers = 5;
+            let raceStart = false;
+            let hasWinner = false;
+            const racerPromises = [];
+
+            const addCommentary = (commentaryValue) => {
+                const commentElement = document.createElement('div');
+                commentElement.textContent = commentaryValue;
+                commentaryElement.appendChild(commentElement);
+            }
+
+            const createRacer = (number) => {
+                return new Promise((resolve, reject) => {
+                    const racerElement = document.createElement('div');
+
+                    raceElement.appendChild(racerElement);
+
+                    racerElement.textContent = `Racer ${number}: `;
+
+                    const distanceElement = document.createElement('span');
+                    distanceElement.textContent = 0;
+                    racerElement.appendChild(distanceElement);
+
+                    let distance = 0;
+
+                    const run = () => {
+                        if (raceStart) {
+                            distance = Math.min(
+                                1000,
+                                distance + Math.max(0, Math.floor(Math.random() * 10) - 3)
+                            );
+                        }
+
+                        distanceElement.textContent = distance;
+
+                        if (distance === 1000) {
+                            if (hasWinner) {
+                                reject(number);
+                            } else {
+                                resolve(number);
+                            }
+                        } else {
+                            requestAnimationFrame(run);
+                        }
+                    }
+                    run();
+                }).then((value) => {
+                    addCommentary(`Racer ${value} has finished!`);
+                    return value;
+                });
+            }
+
+            for (let i = 0; i < racers; i++) {
+                racerPromises.push(createRacer(i + 1));
+            }
+
+            setTimeout(() => {
+                raceStart = true;
+                addCommentary('The race has begun!');
+            }, 1000);
+
+            Promise.all(racerPromises).then((values) => {
+                addCommentary('The race has ended!');
+                addCommentary(`Special thanks to racers: ${values.join(', ')}`);
+            }).catch((value) => {
+                addCommentary(`Race ended, because ${value} bailed!`);
+            });
+
+            Promise.race(racerPromises).then((value) => {
+                addCommentary(`Racer ${value} has won the race!`);
+                hasWinner = true;
+            }).catch((value) => {
+                addCommentary(`Oh no! Racer ${value} bailed!`);
+            });
+
+            Promise.any(racerPromises).then((value) => {
+                addCommentary(`Racer ${value} has finished first!`);
+            }).catch((value) => {
+                addCommentary('Oh no! All racers bailed!');
+            });
+        </script>
+    </body>
+</html>

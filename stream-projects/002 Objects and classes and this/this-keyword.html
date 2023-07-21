@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>002 Objects</title>
+    </head>
+    <body>
+        <script>
+            console.clear();
+
+            const options = {
+                name: 'Test',
+                showName () {
+                    console.log(this, this.name);
+                },
+                showNameAgain: () => {
+                    console.log(this, this.name);
+                }
+            };
+
+            function doSomething(opts) {
+                console.log(opts.name);
+
+                if (typeof opts.showName === 'function') {
+                    opts.showName();
+                }
+
+                if (typeof opts.showNameAgain === 'function') {
+                    opts.showNameAgain();
+                }
+                console.log(opts);
+            }
+
+            doSomething(options);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<script>
+    console.clear();
+
+    function sum(firstNumber, ...numbers) {
+        let number = firstNumber;
+
+        numbers.forEach((currentNumber) => {
+            number+= currentNumber;
+        });
+
+        return number;
+    }
+
+    console.log(sum(1, 2, 3, 4, 5, 6, 7, 8));
+
+    const someArray = [1, 2, 3, 4];
+
+    const anotherArray = [
+        ...someArray,
+        5,
+        6,
+        7,
+        8,
+    ];
+
+    console.log(anotherArray);
+
+    const person = {
+        gary: 1,
+    };
+
+    const people = {
+        ...person,
+        mary: 2,
+    };
+
+    console.log(people);
+</script>

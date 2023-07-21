@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>003 Async</title>
+    </head>
+    <body>
+        <script>
+            console.clear();
+
+            const image = new Image();
+            image.src = './music-note.png';
+
+            console.log(image.width);
+
+            image.onload = function() {
+                console.log('Image loaded!');
+                console.log(image.width);
+            }
+
+            console.log('Loading image...');
+        </script>
+    </body>
+</html>

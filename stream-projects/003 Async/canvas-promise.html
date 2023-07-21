@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>003 Canvas</title>
+    </head>
+    <body>
+        <canvas id="canvas"></canvas>
+        <script>
+            console.clear();
+
+            const canvas = document.querySelector('#canvas');
+            const context = canvas.getContext('2d');
+
+            const image = new Image();
+            image.src = './music-note.png';
+
+            const imagePromise = new Promise((resolve) => {
+
+                image.onload = function() {
+                    resolve();
+                }
+            });
+            
+            canvas.width = 320;
+            canvas.height = 240;
+
+            const draw = () => {
+                context.fillStyle = '#ccc';
+                context.fillRect(0, 0, canvas.width, canvas.height);
+                imagePromise.then(() => {
+                    context.drawImage(image, (canvas.width - 240) / 2, 0, 240, 240);
+                });
+
+                requestAnimationFrame(draw);
+            }
+
+            imagePromise.then(() => {
+                canvas.width = image.width;
+                canvas.height = image.height;
+            });
+
+            draw();
+        </script>
+    </body>
+</html>

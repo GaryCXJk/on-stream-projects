@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>003 Promises</title>
+    </head>
+    <body>
+        <button type="button" id="button">Cancel timeout</button>
+        <div id="ticker"></div>
+        <script>
+            console.clear();
+
+            const button = document.querySelector('#button');
+            const ticker = document.querySelector('#ticker');
+
+            let value = 0;
+            let running = true;
+
+            const interval = () => {
+                value++;
+                ticker.textContent = value;
+
+                if (running) {
+                    requestAnimationFrame(interval);
+                }
+            };
+
+            const promise = new Promise((resolve, reject) => {
+                const timeout = setTimeout(() => {
+                    resolve(value);
+                }, 10000);
+                
+                button.addEventListener('click', () => {
+                    clearTimeout(timeout);
+                    reject(new Error('Clicked on the button!'));
+                });
+            })
+                .then((value) => {
+                    console.log('Done!', value);
+                })
+                .catch((error) => {
+                    console.error('Rejected!', error);
+                })
+                .finally(() => {
+                    button.parentNode.removeChild(button);
+                });
+
+            interval();
+            console.log(promise);
+        </script>
+    </body>
+</html>

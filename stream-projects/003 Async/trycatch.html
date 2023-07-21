@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>003 Async</title>
+    </head>
+    <body>
+        <script>
+            console.clear();
+
+            let letters = '';
+            try {
+                const letter1 = 'A';
+                const letter2 = 'B';
+
+                letters = letter1 + letter2;
+                console.log(letter1, letter2);
+
+                throw new Error('Sorry!');
+
+                letters = letter1 + letter2;
+                console.log(letter2, letter1);
+            } catch (e) {
+                console.log(e);
+            }
+
+            console.log(letters);
+        </script>
+    </body>
+</html>

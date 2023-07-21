@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>001 First Project - Arrays</title>
+    </head>
+    <body>
+        <h1>FizzBuzz</h1>
+        A game where you count from 1 to a certain number (like 15). When you get a number that's divisable by 3, you say Fizz, when it's divisable by 5, you say Buzz. If it's both, you say FizzBuzz.
+
+        <pre id="output"></pre>
+        <script>
+            console.clear();
+
+            const max = 15;
+
+            const values = [];
+
+            for (let i = 1; i <= max; i+= 1) {
+                let output = '';
+                if (i % 3 === 0) {
+                    output+= 'Fizz';
+                }
+                if (i % 5 === 0) {
+                    output+= 'Buzz';
+                }
+                if (output) {
+                    values.push(output);
+                } else {
+                    values.push(i);
+                }
+            }
+
+            const text = values.join('\n');
+
+            const output = document.getElementById('output');
+            output.textContent = text;
+        </script>
+    </body>
+</html>

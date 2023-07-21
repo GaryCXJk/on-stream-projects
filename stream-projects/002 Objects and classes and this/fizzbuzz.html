@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>002 Objects</title>
+    </head>
+    <body>
+        <h1>FizzBuzz</h1>
+        A game where you count from 1 to a certain number (like 15). When you get a number that's divisable by 3, you say Fizz, when it's divisable by 5, you say Buzz. If it's both, you say FizzBuzz.
+
+        <form id="submit">
+            <input id="steps" type="number" value="15" />
+            <button type="submit">Submit</button>
+        </form>
+        <table id="output"></table>
+        <script>
+            console.clear();
+            const output = document.getElementById('output');
+            const steps = document.getElementById('steps');
+            const submit = document.getElementById('submit');
+
+            function FizzBuzz(outputs = {
+                3: 'Fizz',
+                5: 'Buzz',
+            }, order = null) {
+                this.outputs = outputs;
+                this.order = order ?? Object.keys(outputs);
+            }
+
+            FizzBuzz.prototype.getValue = function (num = 15) {
+                let output = '';
+                this.order.forEach((key) => {
+                    if (num % key === 0) {
+                        output+= this.outputs[key];
+                    }
+                });
+                if (output) {
+                    return output;
+                }
+                return num;
+            }
+
+            FizzBuzz.prototype.getRange = function (max = 15, min = null) {
+                const values = [];
+
+                for (let i = 1; i <= max; i+= 1) {
+                    values.push(this.getValue(i));
+                }
+
+                return values;
+            }
+
+            const fizzBuzz = new FizzBuzz();
+            const fooBar = new FizzBuzz({
+                2: 'Foo',
+                7: 'Bar',
+            });
+            const fizzBuzzFooBar = new FizzBuzz({
+                3: 'Fizz',
+                5: 'Buzz',
+                2: 'Foo',
+                7: 'Bar',
+            }, [3, 5, 2, 7]);
+
+            function outputFizzBuzz(e) {
+                e.preventDefault();
+
+                const totalSteps = steps.value;
+
+                const fizzBuzzValues = fizzBuzz.getRange(totalSteps);
+                const fooBarValues = fooBar.getRange(totalSteps);
+                const fizzBuzzfooBarValues = fizzBuzzFooBar.getRange(totalSteps);
+
+                output.innerHTML = '';
+
+                for (let i = 0; i < totalSteps; i++) {
+                    const row = document.createElement('tr');
+                    const realNumber = document.createElement('td');
+                    const fizzBuzzNumber = document.createElement('td');
+                    const fooBarNumber = document.createElement('td');
+                    const fizzBuzzfooBarNumber = document.createElement('td');
+
+                    realNumber.textContent = i + 1;
+                    row.appendChild(realNumber);
+
+                    fizzBuzzNumber.textContent = fizzBuzzValues[i];
+                    row.appendChild(fizzBuzzNumber);
+
+                    fooBarNumber.textContent = fooBarValues[i];
+                    row.appendChild(fooBarNumber);
+
+                    fizzBuzzfooBarNumber.textContent = fizzBuzzfooBarValues[i];
+                    row.appendChild(fizzBuzzfooBarNumber);
+
+                    output.appendChild(row);
+                }
+            }
+
+            submit.addEventListener('submit', outputFizzBuzz);
+        </script>
+    </body>
+</html>

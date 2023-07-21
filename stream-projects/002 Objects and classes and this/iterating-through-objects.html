@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>002 Objects</title>
+    </head>
+    <body>
+        <script>
+            console.clear();
+
+            const dictionary = {
+                a: 1,
+                b: 2,
+                c: 100,
+                d: 4,
+                e: 5124,
+            };
+
+            const dictionaryKeys = Object.keys(dictionary);
+
+            dictionaryKeys.forEach(function (key) {
+                console.log(dictionary[key]);
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>001 First Project - Functions</title>
+    </head>
+    <body>
+        <h1>FizzBuzz</h1>
+        A game where you count from 1 to a certain number (like 15). When you get a number that's divisable by 3, you say Fizz, when it's divisable by 5, you say Buzz. If it's both, you say FizzBuzz.
+
+        <form id="submit">
+            <input id="steps" type="number" value="15" />
+            <button type="submit">Submit</button>
+        </form>
+        <pre id="output"></pre>
+        <script>
+            console.clear();
+            const output = document.getElementById('output');
+            const steps = document.getElementById('steps');
+            const submit = document.getElementById('submit');
+
+            function getFizzBuzzValue(num = 15) {
+                let output = '';
+                if (num % 3 === 0) {
+                    output+= 'Fizz';
+                }
+                if (num % 5 === 0) {
+                    output+= 'Buzz';
+                }
+                if (output) {
+                    return output;
+                }
+                return num;
+            }
+
+            function outputFizzBuzz(e) {
+                e.preventDefault();
+
+                const max = steps.value;
+
+                const values = [];
+
+                for (let i = 1; i <= max; i+= 1) {
+                    values.push(getFizzBuzzValue(i));
+                }
+
+                output.textContent = values.join('\n');
+            }
+
+            submit.addEventListener('submit', outputFizzBuzz);
+        </script>
+    </body>
+</html>

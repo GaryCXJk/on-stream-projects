@@ -1,0 +1,111 @@
+<script>
+    console.clear();
+
+    class Person {
+        firstName;
+        #middleNames = [];
+        lastName;
+        age;
+
+        constructor(firstName, lastName, age = 'Undefined') {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.age = age;
+        }
+        
+        get name() {
+            return this.firstName + ' ' + this.lastName;
+        }
+
+        set name(value) {
+            const nameParts = value.split(' ');
+            this.firstName = nameParts.shift();
+            this.lastName = nameParts.pop();
+            this.#middleNames = nameParts;
+        }
+
+        get middleNames() {
+            return this.#middleNames.join(' ');
+        }
+
+        set middleNames(value) {
+            let middleNames = value;
+            if (Array.isArray(value)) {
+                middleNames = [...value];
+            } else {
+                middleNames = `${value}`;
+                middleNames = middleNames.split(' ');
+            }
+
+            this.#middleNames = middleNames;
+        }
+
+        clone() {
+            const newInstance = new Person(this.firstName, this.lastName, this.age);
+            newInstance.#middleNames = [...this.#middleNames];
+            return newInstance;
+        }
+    }
+
+    class Programmer extends Person {
+        #knownLanguages = [];
+
+        constructor(firstName, lastName, age = 'Undefined') {
+            super(firstName, lastName, age);
+        }
+
+        get knownLanguages() {
+            return this.#knownLanguages.join(', ');
+        }
+
+        addLanguage(language) {
+            if (!this.#knownLanguages.includes(language)) {
+                this.#knownLanguages.push(language);
+            }
+        }
+
+        removeLanguage(language) {
+            const languageIndex = this.#knownLanguages.indexOf(language);
+            if (languageIndex >= 0) {
+                this.#knownLanguages.splice(languageIndex, 1);
+            }
+        }
+
+        knowsLanguage(language) {
+            return this.#knownLanguages.includes(language);
+        }
+
+        languageCount() {
+            return this.#knownLanguages.length;
+        }
+
+        clone() {
+            const newInstance = super.clone();
+            newInstance.#knownLanguages = [...this.#knownLanguages];
+        }
+    }
+
+    const gary = new Programmer('Gary', 'Kertopermono', 37);
+    const awexomesauce = new Person('Awexome', 'Sauce');
+    const awexomeTwo = awexomesauce.clone();
+
+    console.log(gary);
+    console.log(gary.name);
+
+    awexomesauce.name = 'Awexome P Sauce';
+
+    console.log(awexomesauce.name);
+    console.log(awexomesauce, gary);
+
+    gary.addLanguage('JavaScript');
+    gary.addLanguage('PHP');
+    gary.addLanguage('Haskel');
+    gary.removeLanguage('Haskel');
+
+    console.log(gary.languageCount(), gary.knownLanguages);
+
+    console.log(gary instanceof Programmer);
+    console.log(gary instanceof Person);
+    console.log(awexomesauce instanceof Programmer);
+    console.log(awexomesauce instanceof Person);
+</script>

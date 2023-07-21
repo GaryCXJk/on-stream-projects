@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>003 Generator function</title>
+    </head>
+    <body>
+        <script>
+            console.clear();
+
+            function * generatorFunction() {
+                for (let i = 0; i < 3; i += 1) {
+                    yield i;
+                }
+                return 'Done';
+            }
+
+            const generator = generatorFunction();
+
+            console.log(generator.next());
+            console.log(generator.next());
+            console.log(generator.next());
+            console.log(generator.next());
+        </script>
+    </body>
+</html>

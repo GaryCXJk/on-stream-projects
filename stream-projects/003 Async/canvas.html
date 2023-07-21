@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>003 Canvas</title>
+    </head>
+    <body>
+        <canvas id="canvas"></canvas>
+        <script>
+            console.clear();
+
+            const canvas = document.querySelector('#canvas');
+            const context = canvas.getContext('2d');
+
+            canvas.width = 320;
+            canvas.height = 240;
+
+            context.fillStyle = '#ccc';
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
+            const image = new Image();
+            image.src = './music-note.png';
+
+            console.log(image.width);
+
+            image.onload = function() {
+                console.log('Image loaded!');
+                console.log(image.width);
+                context.drawImage(image, (canvas.width - 240) / 2, 0, 240, 240);
+            }
+
+            console.log('Loading image...');
+        </script>
+    </body>
+</html>
