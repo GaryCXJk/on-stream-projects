@@ -19,6 +19,7 @@
     --progress-background-color: #fff;
     --progress-height: .25rem;
     --progress-margin: .25rem;
+    --progress-font-size: .375rem;
 }
 
 html {
@@ -72,6 +73,13 @@ body {
     height: var(--progress-height);
     background-color: #fff;
     width: 0;
+}
+
+.time {
+    margin-top: var(--progress-margin);
+    font-size: var(--progress-font-size);
+    text-align: center;
+    font-feature-settings:'tnum';
 }
 
 .info-block {
@@ -146,6 +154,31 @@ body {
     left: 0;
     top: 0;
     white-space: nowrap;
+}
+
+.playing-next-container {
+    padding-left: var(--widget-padding);
+    font-size: .5rem;
+    display: flex;
+    gap: .5rem;
+}
+
+.playing-next-content {
+    position: relative;
+    overflow: hidden;
+    height: 0.75rem;
+    flex: 1 0 0;
+}
+
+.playing-next {
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+}
+
+.playing-next-artist {
+    font-style: italic;
 }
 
 .widget-footer {

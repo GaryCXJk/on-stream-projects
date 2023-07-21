@@ -13,6 +13,7 @@
                 <div class="image-block">
                     <div class="image" id="image"></div>
                     <div class="progress" id="progress"></div>
+                    <div class="time" id="time">--:-- / --:--</div>
                 </div>
                 <div class="info-block">
                     <div class="loading" id="loading">
@@ -47,11 +48,30 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="playing-next-container">
+                            Next:
+                            <div class="playing-next-content">
+                                <div class="playing-next" id="next">
+                                    <div id="next-none">
+                                        None
+                                    </div>
+                                    <div class="hidden" id="next-available">
+                                        <span class="playing-next-artist" id="next-artist">Artist</span>
+                                        &mdash;
+                                        <span id="next-song">Song</span>
+                                        (<span id="next-duration">--:--</span>)
+                                        | Requested by
+                                        <span id="next-requested">Requester</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="widget-footer">Powered by Songify</div>
         </div>
+        <!-- settings -->
         <script src="./songify.js"></script>
     </body>
 </html>
