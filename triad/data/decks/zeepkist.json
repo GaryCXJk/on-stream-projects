@@ -1,0 +1,30 @@
+{
+    "name": "Zeepkist",
+    "cards": {
+        "zeepdude": {
+            "name": "Zeepdude",
+            "image": "zeepdude.webp",
+            "ranks": [1, 4, 2, 4],
+            "level": 1
+        },
+        "cat": {
+            "name": "Cat",
+            "image": "cat.webp",
+            "ranks": [2, 3, 4, 2],
+            "level": 1
+        },
+        "snowman": {
+            "name": "Snowman",
+            "image": "snowman.webp",
+            "ranks": [3, 7, 1, 6],
+            "element": "ice",
+            "level": 4
+        },
+        "ghost": {
+            "name": "Ghost",
+            "image": "ghost.webp",
+            "ranks": [3, 8, 4, 7],
+            "level": 6
+        }
+    }
+}
